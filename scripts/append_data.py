@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timezone
 import requests
 
-DATA_FILE = "data.json"
+DATA_FILE = "hourly_weather_append.json"
 LATITUDE = 51.5
 LONGITUDE = -0.0
 
