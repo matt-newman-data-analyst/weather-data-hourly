@@ -40,11 +40,13 @@ result = response.json()
 times = result["hourly"]["time"]
 temps = result["hourly"]["temperature_2m"]
 
-# 4. Build new entries, skipping any null temperature values (can happen near "now")
+# 4. Build new entries, skipping nulls and anything beyond the current hour (i.e. forecast)
+now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M")
+
 new_entries = [
     {"datetime": t, "temp": temp}
     for t, temp in zip(times, temps)
-    if temp is not None
+    if temp is not None and t <= now_utc
 ]
 
 # 5. Merge, de-duplicating by datetime (existing entries take priority over re-fetched ones)
