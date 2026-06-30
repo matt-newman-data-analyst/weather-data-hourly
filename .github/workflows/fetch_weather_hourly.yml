@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add hourly_weather_append.json
           git diff --staged --quiet || git commit -m "Append hourly data $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           git push
